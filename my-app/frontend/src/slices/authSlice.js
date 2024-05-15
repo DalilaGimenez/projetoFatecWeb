@@ -10,7 +10,7 @@ const initialState = {
   loading: false,
 };
 
-// Register a user and sign in
+// Register an user and sign in
 export const register = createAsyncThunk(
   "auth/register",
   async (user, thunkAPI) => {
@@ -56,7 +56,7 @@ export const authSlice = createSlice({
     builder
       .addCase(register.pending, (state) => {
         state.loading = true;
-        state.error = null;
+        state.error = false;
       })
       .addCase(register.fulfilled, (state, action) => {
         state.loading = false;

@@ -43,12 +43,12 @@ const Register = () => {
 
   return (
     <div id="register">
-      <h2>FATEGram</h2>
-      <p className="subtitle">Cadastre-se para ver as fotos dos seus amigos.</p>
+      <h2>Cãonecta AUmor</h2>
+      <p className="subtitle">Faça seu cadastro para divulgar ou adotar um aumigo!</p>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
-          placeholder="Nome"
+          placeholder="Nome e Sobrenome"
           onChange={(e) => setName(e.target.value)}
           value={name}
         />
@@ -66,7 +66,7 @@ const Register = () => {
         />
         <input
           type="password"
-          placeholder="Confirme a senha"
+          placeholder="Confirme a Senha"
           onChange={(e) => setConfirmPassword(e.target.value)}
           value={confirmPassword}
         />
@@ -75,7 +75,7 @@ const Register = () => {
         {error && <Message msg={error} type="error" />}
       </form>
       <p>
-        Já tem conta? <Link to="/login">Clique aqui</Link>
+        Já possui uma conta? <Link to="/login">Clique aqui</Link>
       </p>
     </div>
   );

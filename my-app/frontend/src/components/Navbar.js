@@ -1,5 +1,7 @@
 import "./Navbar.css";
 
+// Image
+
 // Components
 import { NavLink, Link } from "react-router-dom";
 import {
@@ -46,7 +48,7 @@ const Navbar = () => {
   return (
     <nav id="nav">
       <Link to="/">
-        <h2>FATEGram</h2>
+        <h2>Cãonecta AUmor</h2>
       </Link>
       <form id="search-form" onSubmit={handleSearch}>
         <BsSearch />

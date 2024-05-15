@@ -1,6 +1,6 @@
 import { api, requestConfig } from "../utils/config";
 
-// Register a user
+// Register an user
 const register = async (data) => {
   const config = requestConfig("POST", data);
 
