@@ -41,13 +41,16 @@ const Register = () => {
     dispatch(reset());
   }, [dispatch]);
 
-  const imageBackground = require("../../images/imageBackgroundSignUp.png");
+  //const imageBackground = require("../../images/imageBackgroundSignUp.png");
+  /*
+        <div id="register-backgroud" >
+<img src={imageBackground} alt="Background" />
+  </div>
+  */
 
   return (
     <div id="register">
-      <div id="register-backgroud" >
-        <img src={imageBackground} alt="Background" />
-      </div>
+
       <h2>Cãonecta AUmor</h2>
       <p className="subtitle">Faça seu cadastro para divulgar ou adotar um aumigo!</p>
       <form onSubmit={handleSubmit}>
@@ -76,7 +79,7 @@ const Register = () => {
           value={confirmPassword || ""}
         />
         {!loading && <input type="submit" value="Cadastrar" />}
-        {loading && <input type="submit" disabled value="Aguarde..." />}
+        {loading && <input type="submit" value="Aguarde..." disabled />}
         {error && <Message msg={error} type="error" />}
       </form>
       <p>

@@ -1,4 +1,5 @@
 import "./EditProfile.css";
+import defaultProfileImage from "../../images/imageProfile.png"; 
 
 import { uploads } from "../../utils/config";
 
@@ -35,6 +36,7 @@ const Profile = () => {
       setName(user.name);
       setEmail(user.email);
       setBio(user.bio);
+      setProfileImage(user.profileImage);
     }
   }, [user]);
 
@@ -67,7 +69,7 @@ const Profile = () => {
 
     formData.append("user", userFormData);
 
-    await dispatch(updateProfile(formData));
+    await dispatch(updateProfile(userFormData));
 
     setTimeout(() => {
       dispatch(resetMessage());
@@ -90,7 +92,7 @@ const Profile = () => {
       <p className="subtitle">
         Adicione uma imagem de perfil, e conte mais um pouco sobre você...
       </p>
-      {(user.profileImage || previewImage) && (
+      {(user.profileImage || previewImage ) && (
         <img
           className="profile-image"
           src={
@@ -104,11 +106,11 @@ const Profile = () => {
       <form onSubmit={handleSubmit}>
         <input
           type="text"
-          placeholder="Nome"
+          //placeholder=´${name}´
           onChange={(e) => setName(e.target.value)}
           value={name || ""}
         />
-        <input type="email" placeholder="E-mail" disabled value={email || ""} />
+        <input type="email" placeholder="E-mail" disabled value={email} />
         <label>
           <span>Imagem de Perfil:</span>
           <input type="file" onChange={handleFile} />
