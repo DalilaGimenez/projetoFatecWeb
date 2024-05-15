@@ -39,8 +39,8 @@ const Login = () => {
 
   return (
     <div id="login">
-      <h2>FATEGram</h2>
-      <p className="subtitle">Faça o login para ver o que há de novo.</p>
+      <h2>Cãonecta AUmor</h2>
+      <p className="subtitle">Faça seu login para divulgar ou adotar um aumigo!</p>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
@@ -59,7 +59,7 @@ const Login = () => {
         {error && <Message msg={error} type="error" />}
       </form>
       <p>
-        Não tem uma conta? <Link to="/register">Clique aqui</Link>
+        Não tem uma conta? <Link to="/register">Clique aqui!</Link>
       </p>
     </div>
   );

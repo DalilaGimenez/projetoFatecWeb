@@ -38,7 +38,7 @@ const Home = () => {
 
   return (
     <div id="home">
-      {photos &&
+      {Array.isArray(photos) && photos.length > 0 ? (
         photos.map((photo) => (
           <div key={photo._id}>
             <PhotoItem photo={photo} />
@@ -47,11 +47,17 @@ const Home = () => {
               Ver mais
             </Link>
           </div>
-        ))}
-      {photos && photos.length === 0 && (
+        ))
+      ) : (
         <h2 className="no-photos">
-          Ainda não há fotos publicadas,{" "}
-          <Link to={`/users/${user.userId}`}>clique aqui</Link> para começar.
+          {photos && photos.length === 0 ? (
+            <span>
+              Ainda não há fotos publicadas,{" "}
+              <Link to={`/users/${user.userId}`}>clique aqui</Link> para começar.
+            </span>
+          ) : (
+            "Não foi possível carregar as fotos."
+          )}
         </h2>
       )}
     </div>

@@ -41,8 +41,13 @@ const Register = () => {
     dispatch(reset());
   }, [dispatch]);
 
+  const imageBackground = require("../../images/imageBackgroundSignUp.png");
+
   return (
     <div id="register">
+      <div id="register-backgroud" >
+        <img src={imageBackground} alt="Background" />
+      </div>
       <h2>Cãonecta AUmor</h2>
       <p className="subtitle">Faça seu cadastro para divulgar ou adotar um aumigo!</p>
       <form onSubmit={handleSubmit}>
@@ -75,7 +80,7 @@ const Register = () => {
         {error && <Message msg={error} type="error" />}
       </form>
       <p>
-        Já possui uma conta? <Link to="/login">Clique aqui</Link>
+        Já possui uma conta? <Link to="/login">Clique aqui!</Link>
       </p>
     </div>
   );

@@ -1,9 +1,22 @@
 #footer {
-    background-color: #58559B;
-    color: #dddd;
-    height: 80px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-top: 1px solid #363636;
-  }
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 20px;
+  padding: 10px;
+  background-color: #58559B;
+  color: #dddd;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  border-top: 1px solid #dddd;
+}
+
+#footer p {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  font-size: small;
+  padding: 10px;
+}
