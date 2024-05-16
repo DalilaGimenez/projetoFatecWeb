@@ -46,13 +46,13 @@ const Login = () => {
           type="text"
           placeholder="E-mail"
           onChange={(e) => setEmail(e.target.value)}
-          value={email || ""}
+          value={email}
         />
         <input
           type="password"
           placeholder="Senha"
           onChange={(e) => setPassword(e.target.value)}
-          value={password || ""}
+          value={password}
         />
         {!loading && <input type="submit" value="Entrar" />}
         {loading && <input type="submit" disabled value="Aguarde..." />}
