@@ -1,13 +1,27 @@
-#login,
+#login {
+  position: fixed;
+  background-color: #58559B;
+  padding: 1.5em 2em;
+  max-width: 43%;
+  margin: 2em auto;
+  top: 50%;
+  left: 70%;
+  transform: translate(-50%, -50%);
+}
+
 #register {
-  border: 1px solid #363636;
+  position: fixed;
   background-color: #58559B;
   padding: 1.5em 2em;
   max-width: 33%;
   margin: 2em auto;
+  top: 50%;
+  left: 20%;
+  transform: translate(-50%, -50%);
 }
+
 #register-backgroud {
-  position: fixed; /* Defina a posição relativa para que o formulário seja posicionado corretamente */
+  position: relative; /* Defina a posição relativa para que o formulário seja posicionado corretamente */
   width: 100%; /* Defina a largura do formulário para ocupar toda a largura da janela do navegador */
   max-width: 500px; /* Defina uma largura máxima para o formulário */
   margin: 0 auto; /* Centralize o formulário horizontalmente */
@@ -57,4 +71,30 @@
 #register p a {
   font-weight: bold;
   color: #00C9CC;
+}
+
+#background-right {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 55%; /* Ajuste a largura conforme necessário */
+  height: auto;
+  background-color: #58559B;
+  border-start-start-radius: 50%; /* Arredonda o canto superior esquerdo */
+  border-bottom-left-radius: 50%; /* Arredonda o canto superior esquerdo */
+  z-index: -1; /* Move o elemento para trás para que fique atrás do conteúdo principal */
+}
+
+#background-img {
+  position: fixed;
+  margin: 2em; 
+  padding: 0; 
+  left: 0;
+  width: 35%;
+  height: auto; 
+  max-width: 100%;
+  border-radius: 50%;
+  float: left; 
+  z-index: -1; /* Move o elemento para trás para que fique atrás do conteúdo principal */
 }

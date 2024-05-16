@@ -37,31 +37,39 @@ const Login = () => {
     dispatch(reset());
   }, [dispatch]);
 
+  const imageBackgroundLogin = require("../../images/imageBackgroundLogin.png");
+
   return (
-    <div id="login">
-      <h2>Cãonecta AUmor</h2>
-      <p className="subtitle">Faça seu login para divulgar ou adotar um aumigo!</p>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="E-mail"
-          onChange={(e) => setEmail(e.target.value)}
-          value={email}
-        />
-        <input
-          type="password"
-          placeholder="Senha"
-          onChange={(e) => setPassword(e.target.value)}
-          value={password}
-        />
-        {!loading && <input type="submit" value="Entrar" />}
-        {loading && <input type="submit" disabled value="Aguarde..." />}
-        {error && <Message msg={error} type="error" />}
-      </form>
-      <p>
-        Não tem uma conta? <Link to="/register">Clique aqui!</Link>
-      </p>
-    </div>
+    <>
+      <div id="background-right"></div>
+      <img
+        id="background-img"
+        src={imageBackgroundLogin}
+        alt="Imagem de Background da pagina Login" />
+      <div id="login">
+        <p className="subtitle">Faça seu login para divulgar ou adotar um aumigo!</p>
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            placeholder="E-mail"
+            onChange={(e) => setEmail(e.target.value)}
+            value={email}
+          />
+          <input
+            type="password"
+            placeholder="Senha"
+            onChange={(e) => setPassword(e.target.value)}
+            value={password}
+          />
+          {!loading && <input type="submit" value="Entrar" />}
+          {loading && <input type="submit" disabled value="Aguarde..." />}
+          {error && <Message msg={error} type="error" />}
+        </form>
+        <p>
+          Não tem uma conta? <Link to="/register">Clique aqui!</Link>
+        </p>
+      </div>
+    </>
   );
 };
 
