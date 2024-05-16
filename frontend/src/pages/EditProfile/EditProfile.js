@@ -1,5 +1,4 @@
 import "./EditProfile.css";
-import defaultProfileImage from "../../images/imageProfile.png"; 
 
 import { uploads } from "../../utils/config";
 

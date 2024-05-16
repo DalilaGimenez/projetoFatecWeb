@@ -1,7 +1,5 @@
 import "./Navbar.css";
 
-// Image
-
 // Components
 import { NavLink, Link } from "react-router-dom";
 import {
@@ -19,6 +17,9 @@ import { useNavigate } from "react-router-dom";
 
 // Redux
 import { logout, reset } from "../slices/authSlice";
+
+// Image
+const logo = require("../images/logo.png");
 
 const Navbar = () => {
   const { auth } = useAuth();
@@ -47,9 +48,18 @@ const Navbar = () => {
 
   return (
     <nav id="nav">
-      <Link to="/">
-        <h2>Cãonecta AUmor</h2>
+      
+      <Link className="logo" to="/">
+        <img className="profile-image"
+          src={logo}
+          alt="Logo Cãonecta AUmor"
+        />
+        <div className="logo">
+        <h2>Cãonecta</h2>
+        <h2>AUmor</h2>
+        </div>
       </Link>
+      
       <form id="search-form" onSubmit={handleSearch}>
         <BsSearch />
         <input

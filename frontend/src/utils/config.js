@@ -1,5 +1,5 @@
-export const api = "https://api.render.com/deploy/srv-cp2f8io21fec73cqbet0?key=eVHETFK_ARE/api";
-export const uploads = "https://api.render.com/deploy/srv-cp2f8io21fec73cqbet0?key=eVHETFK_ARE/uploads";
+export const api = "https://projetofatecweb.onrender.com";
+export const uploads = "https://projetofatecweb.onrender.com/uploads";
 
 export const requestConfig = (method, data, token = null, image = null) => {
   let config;
