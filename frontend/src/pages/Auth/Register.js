@@ -41,51 +41,51 @@ const Register = () => {
     dispatch(reset());
   }, [dispatch]);
 
-  //const imageBackground = require("../../images/imageBackgroundSignUp.png");
-  /*
-        <div id="register-backgroud" >
-<img src={imageBackground} alt="Background" />
-  </div>
-  */
+  const imageBackground = require("../../images/imageBackgroundSignUp.png");
 
   return (
-    <div id="register">
-
-      <h2>Cãonecta AUmor</h2>
-      <p className="subtitle">Faça seu cadastro para divulgar ou adotar um aumigo!</p>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Nome e Sobrenome"
-          onChange={(e) => setName(e.target.value)}
-          value={name}
-        />
-        <input
-          type="email"
-          placeholder="E-mail"
-          onChange={(e) => setEmail(e.target.value)}
-          value={email}
-        />
-        <input
-          type="password"
-          placeholder="Senha"
-          onChange={(e) => setPassword(e.target.value)}
-          value={password}
-        />
-        <input
-          type="password"
-          placeholder="Confirme a Senha"
-          onChange={(e) => setConfirmPassword(e.target.value)}
-          value={confirmPassword}
-        />
-        {!loading && <input type="submit" value="Cadastrar" />}
-        {loading && <input type="submit" value="Aguarde..." disabled />}
-        {error && <Message msg={error} type="error" />}
-      </form>
-      <p>
-        Já possui uma conta? <Link to="/login">Clique aqui!</Link>
-      </p>
+    <>
+    <div className="container">
+    <div className="background-left"></div>
+    <img id="register-background-img" src={imageBackground} alt="Imagem de Background" />
     </div>
+
+      <div id="register">
+        <p className="subtitle">Faça seu cadastro para divulgar ou adotar um aumigo!</p>
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            placeholder="Nome e Sobrenome"
+            onChange={(e) => setName(e.target.value)}
+            value={name}
+          />
+          <input
+            type="email"
+            placeholder="E-mail"
+            onChange={(e) => setEmail(e.target.value)}
+            value={email}
+          />
+          <input
+            type="password"
+            placeholder="Senha"
+            onChange={(e) => setPassword(e.target.value)}
+            value={password}
+          />
+          <input
+            type="password"
+            placeholder="Confirme a Senha"
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            value={confirmPassword}
+          />
+          {!loading && <input type="submit" value="Cadastrar" />}
+          {loading && <input type="submit" value="Aguarde..." disabled />}
+          {error && <Message msg={error} type="error" />}
+        </form>
+        <p>
+          Já possui uma conta? <Link to="/login">Clique aqui!</Link>
+        </p>
+      </div>
+    </>
   );
 };
 

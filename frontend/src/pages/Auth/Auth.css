@@ -15,31 +15,22 @@
   padding: 1.5em 2em;
   max-width: 33%;
   margin: 2em auto;
-  top: 50%;
   left: 20%;
   transform: translate(-50%, -50%);
-}
-
-#register-backgroud {
-  position: relative; /* Defina a posição relativa para que o formulário seja posicionado corretamente */
-  width: 100%; /* Defina a largura do formulário para ocupar toda a largura da janela do navegador */
-  max-width: 500px; /* Defina uma largura máxima para o formulário */
-  margin: 0 auto; /* Centralize o formulário horizontalmente */
-  background-color: rgba(255, 255, 255, 0.8); /* Adicione um fundo branco semi-transparente ao formulário */
-  padding: 20px; /* Adicione algum preenchimento ao formulário para espaçamento interno */
-  border-radius: 10px; /* Adicione bordas arredondadas ao formulário */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Adicione uma sombra ao formulário para destacá-lo */
-  z-index: 0; /* Certifique-se de que o formulário tenha um z-index maior do que a imagem de fundo */
+  top: 50%;
 }
 
 #register img {
   position: fixed;
-  margin: 0; /* Remova as margens padrão do corpo */
-  padding: 0; /* Remova o preenchimento padrão do corpo */
+  margin: 0;
+  /* Remova as margens padrão do corpo */
+  padding: 0;
+  /* Remova o preenchimento padrão do corpo */
   top: 0;
   right: 0;
   bottom: 0;
-  z-index: 1; /* Defina um z-index menor do que o formulário para que fique atrás */
+  z-index: 1;
+  /* Defina um z-index menor do que o formulário para que fique atrás */
 }
 
 #login h2,
@@ -73,28 +64,64 @@
   color: #00C9CC;
 }
 
+#login-background-img {
+  position: fixed;
+  margin: 2em;
+  padding: 0;
+  left: 0;
+  width: 35%;
+  height: auto;
+  max-width: 100%;
+  border-radius: 50%;
+  float: left;
+  z-index: -1;
+}
+
+#register-background-img {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: auto; /* Ajuste o tamanho conforme necessário */
+  height: 85%; /* Ajuste o tamanho conforme necessário */
+}
+
 #background-right {
   position: fixed;
   top: 0;
   right: 0;
   bottom: 0;
-  width: 55%; /* Ajuste a largura conforme necessário */
+  width: 55%;
+  /* Ajuste a largura conforme necessário */
   height: auto;
   background-color: #58559B;
-  border-start-start-radius: 50%; /* Arredonda o canto superior esquerdo */
-  border-bottom-left-radius: 50%; /* Arredonda o canto superior esquerdo */
-  z-index: -1; /* Move o elemento para trás para que fique atrás do conteúdo principal */
+  border-start-start-radius: 50%;
+  /* Arredonda o canto superior esquerdo */
+  border-bottom-left-radius: 50%;
+  /* Arredonda o canto superior esquerdo */
+  z-index: -1;
+  /* Move o elemento para trás para que fique atrás do conteúdo principal */
 }
 
-#background-img {
+.container {
+  display: flex;
+  justify-content: center; /* Centraliza horizontalmente os itens */
+  align-items: center; /* Centraliza verticalmente os itens */
+  /* height: 100vh;  Altura total da tela */
+  z-index: -1;
+}
+
+.background-left {
   position: fixed;
-  margin: 2em; 
-  padding: 0; 
+  top: 50%;
   left: 0;
-  width: 35%;
-  height: auto; 
-  max-width: 100%;
-  border-radius: 50%;
-  float: left; 
-  z-index: -1; /* Move o elemento para trás para que fique atrás do conteúdo principal */
+  bottom: 0;
+  width: 100%;
+  height: 70%;
+  background-color: #58559B;
+  margin: 1em auto;
+  border-radius: 300px;
+  transform: translate( -30%, -50%);
+  display: flex;
+  justify-content: center; /* Centraliza horizontalmente o conteúdo */
+  align-items: center; /* Centraliza verticalmente o conteúdo */
 }

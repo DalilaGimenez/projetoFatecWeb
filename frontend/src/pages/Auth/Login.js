@@ -41,9 +41,9 @@ const Login = () => {
 
   return (
     <>
-      <div id="background-right"></div>
+      <div class="background-right"></div>
       <img
-        id="background-img"
+        id="login-background-img"
         src={imageBackgroundLogin}
         alt="Imagem de Background da pagina Login" />
       <div id="login">
