@@ -23,14 +23,11 @@
 #register img {
   position: fixed;
   margin: 0;
-  /* Remova as margens padrão do corpo */
   padding: 0;
-  /* Remova o preenchimento padrão do corpo */
   top: 0;
   right: 0;
   bottom: 0;
   z-index: 1;
-  /* Defina um z-index menor do que o formulário para que fique atrás */
 }
 
 #login h2,

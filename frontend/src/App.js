@@ -34,11 +34,15 @@ function App() {
           <Routes>
             <Route
               path="/"
-              element={auth ? <Home /> : <Navigate to="/login" />}
+              element={<Home />}
             />
             <Route
               path="/profile"
               element={auth ? <EditProfile /> : <Navigate to="/login" />}
+            />
+            <Route
+              path="/profile"
+              element={auth ? <Profile /> : <Navigate to="/login" />}
             />
             <Route
               path="/users/:id"

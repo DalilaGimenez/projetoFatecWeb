@@ -1,66 +1,39 @@
 import "./Home.css";
 
 // components
-import LikeContainer from "../../components/LikeContainer";
-import PhotoItem from "../../components/PhotoItem";
 import { Link } from "react-router-dom";
 
-// hooks
-import { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { useResetComponentMessage } from "../../hooks/useResetComponentMessage";
-
-// Redux
-import { getPhotos, like } from "../../slices/photoSlice";
+import imageBackground from "../../images/imageBackgroundHome.png";
 
 const Home = () => {
-  const dispatch = useDispatch();
 
-  const resetMessage = useResetComponentMessage(dispatch);
-
-  const { user } = useSelector((state) => state.auth);
-  const { photos, loading } = useSelector((state) => state.photo);
-
-  // Load all photos
-  useEffect(() => {
-    dispatch(getPhotos());
-  }, [dispatch]);
-
-  const handleLike = (photo = null) => {
-    dispatch(like(photo._id));
-
-    resetMessage();
-  };
-
-  if (loading) {
-    return <p>Carregando...</p>;
-  }
 
   return (
-    <div id="home">
-      {Array.isArray(photos) && photos.length > 0 ? (
-        photos.map((photo) => (
-          <div key={photo._id}>
-            <PhotoItem photo={photo} />
-            <LikeContainer photo={photo} user={user} handleLike={handleLike} />
-            <Link className="btn" to={`/photos/${photo._id}`}>
-              Ver mais
-            </Link>
-          </div>
-        ))
-      ) : (
-        <h2 className="no-photos">
-          {photos && photos.length === 0 ? (
-            <span>
-              Ainda não há fotos publicadas,{" "}
-              <Link to={`/users/${user.userId}`}>clique aqui</Link> para começar.
-            </span>
-          ) : (
-            "Não foi possível carregar as fotos."
-          )}
-        </h2>
-      )}
-    </div>
+    <>
+      <div id="home">
+        <h2>Seja bem vindo ao</h2>
+        <h1>Cãonecta Aumor</h1>
+        <p>O seu destino online para encontrar o seu parceiro canino perfeito!
+          Aqui, unimos corações peludos a lares amorosos, proporcionando uma plataforma onde pessoas e cães se encontram para uma vida cheia de alegria e amor mútuo.</p>
+        <p>Navegue por perfis de <b>cães adoráveis</b> disponíveis para <b>adoção</b>,
+          conheça suas personalidades únicas e encontre aquele que se encaixa
+          perfeitamente no seu estilo de vida e preferências.</p>
+
+        <div>
+          <Link className="btn" to={`/login`}>
+            Entrar
+          </Link>
+        </div>
+
+        <p>
+          Não tem uma conta? <Link to="/register">Clique aqui!</Link>
+        </p>
+
+      </div>
+      <div id="divContent">
+        <img src={imageBackground} alt=" Home's Backgraund Image" />
+      </div>
+    </>
   );
 };
 
