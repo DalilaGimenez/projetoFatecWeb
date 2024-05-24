@@ -158,7 +158,7 @@ export const photoSlice = createSlice({
     builder
       .addCase(publishPhoto.pending, (state) => {
         state.loading = true;
-        state.error = null;
+        state.error = false;
       })
       .addCase(publishPhoto.fulfilled, (state, action) => {
         state.loading = false;
@@ -171,7 +171,7 @@ export const photoSlice = createSlice({
       .addCase(publishPhoto.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
-        state.photo = null;
+        state.photo = {};
       })
       .addCase(getUserPhotos.pending, (state) => {
         state.loading = true;

@@ -54,7 +54,7 @@ function App() {
             />
             <Route
               path="login"
-              element={!auth ? <Login /> : <Navigate to="/" />}
+              element={!auth ? <Login /> : <Navigate to="/HomeInit" />}
             />
             <Route
               path="register"
