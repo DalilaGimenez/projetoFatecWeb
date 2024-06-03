@@ -53,15 +53,15 @@ function App() {
               element={auth ? <Search /> : <Navigate to="/login" />}
             />
             <Route
-              path="login"
-              element={!auth ? <Login /> : <Navigate to="/HomeInit" />}
+              path="/login"
+              element={!auth ? <Login /> : <Navigate to="/login" />}
             />
             <Route
-              path="register"
+              path="/register"
               element={!auth ? <Register /> : <Navigate to="/" />}
             />
             <Route
-              path="photos/:id"
+              path="/photos/:id"
               element={<Photo />} />
           </Routes>
         </div>

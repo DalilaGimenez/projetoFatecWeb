@@ -140,65 +140,69 @@ const Profile = () => {
   }
 
   return (
-    <div id="profile">
-      <div className="profile-header">
-        {user.profileImage && (
-          <img src={`${uploads}/users/${user.profileImage}`} alt={user.name} />
-        )}
-        <div className="profile-description">
-          <h2>{user.name}</h2>
-          <p>{user.bio}</p>
+    <div className="container-background"><div/>
+      <div id="profile">
+        <div className="profile-header">
+          {user.profileImage && (
+            <img src={`${uploads}/users/${user.profileImage}`} alt={user.name} />
+          )}
+          <div className="profile-description">
+            <h2>Olá, {user.name}</h2>
+            <p>{user.bio}</p>
+          </div>
         </div>
-      </div>
-      {id === userAuth._id && (
-        <>
-          <div className="new-photo" ref={newPhotoForm}>
-            <h3>Compartilhe algum momento seu:</h3>
-            <form onSubmit={submitHandle}>
-              <label>
-                <span>Título para a foto:</span>
+        {id === userAuth._id && (
+          <>
+            <div className="new-photo" ref={newPhotoForm}>
+              <h3>Compartilhe Aumor:</h3>
+              <form onSubmit={submitHandle}>
+                <label>
+                  <span>&#128054; Nome do Cão:</span>
+                  <input
+                    type="text"
+                    placeholder="Insira o nome do cachorro"
+                    onChange={(e) => setTitle(e.target.value)}
+                    value={title || ""}
+                  />
+                </label>
+                <label>
+                  <span>Imagem:</span>
+                  <input type="file" onChange={handleFile} />
+                </label>
+                {loadingPhoto && <input type="submit" value="Postar" />}
+                {!loadingPhoto && (
+                  <input type="submit" disabled value="Aguarde..." />
+                )}
+              </form>
+            </div>
+            <div className="edit-photo hide" ref={editPhotoForm}>
+              <p>Editando:</p>
+              {editImage && (
+                <img src={`${uploads}/photos/${editImage}`} alt={editTitle} />
+              )}
+              <form onSubmit={handleUpdate}>
                 <input
                   type="text"
-                  placeholder="Insira um título"
-                  onChange={(e) => setTitle(e.target.value)}
-                  value={title || ""}
+                  onChange={(e) => setEditTitle(e.target.value)}
+                  value={editTitle || ""}
                 />
-              </label>
-              <label>
-                <span>Imagem:</span>
-                <input type="file" onChange={handleFile} />
-              </label>
-              {!loadingPhoto && <input type="submit" value="Postar" />}
-              {loadingPhoto && (
-                <input type="submit" disabled value="Aguarde..." />
-              )}
-            </form>
-          </div>
-          <div className="edit-photo hide" ref={editPhotoForm}>
-            <p>Editando:</p>
-            {editImage && (
-              <img src={`${uploads}/photos/${editImage}`} alt={editTitle} />
-            )}
-            <form onSubmit={handleUpdate}>
-              <input
-                type="text"
-                onChange={(e) => setEditTitle(e.target.value)}
-                value={editTitle || ""}
-              />
-              <input type="submit" value="Atualizar" />
-              <button className="cancel-btn" onClick={handleCancelEdit}>
-                Cancelar edição
-              </button>
-            </form>
-          </div>
-          {errorPhoto && <Message msg={errorPhoto} type="error" />}
-          {messagePhoto && <Message msg={messagePhoto} type="success" />}
-        </>
-      )}
+                <input type="submit" value="Atualizar" />
+                <button className="cancel-btn" onClick={handleCancelEdit}>
+                  Cancelar edição
+                </button>
+              </form>
+            </div>
+            {errorPhoto && <Message msg={errorPhoto} type="error" />}
+            {messagePhoto && <Message msg={messagePhoto} type="success" />}
+          </>
+
+        )}
+      </div>
+
       <div className="user-photos">
         <h2>Fotos publicadas:</h2>
         <div className="photos-container">
-          {photos &&
+          {Array.isArray(photos) &&
             photos.map((photo) => (
               <div className="photo" key={photo._id}>
                 {photo.image && (
@@ -222,7 +226,7 @@ const Profile = () => {
                 )}
               </div>
             ))}
-          {photos.length === 0 && <p>Ainda não há fotos publicadas...</p>}
+          {Array.isArray(photos) && photos.length === 0 && <p>Ainda não há fotos publicadas...</p>}
         </div>
       </div>
     </div>

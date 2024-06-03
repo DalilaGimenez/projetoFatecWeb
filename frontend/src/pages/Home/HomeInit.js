@@ -50,7 +50,7 @@ const HomeInit = () => {
         ))
       ) : (
         <h2 className="no-photos">
-          {photos && photos.length === 0 ? (
+          {Array.isArray(photos) && photos.length === 0 ? (
             <span>
               Ainda não há fotos publicadas,{" "}
               <Link to={`/users/${user.userId}`}>clique aqui</Link> para começar.

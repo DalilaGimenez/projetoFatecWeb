@@ -36,8 +36,10 @@ export const getUserPhotos = createAsyncThunk(
 
     const data = await photoService.getUserPhotos(id, token);
 
-    console.log(data);
-    console.log(data.errors);
+    // Verifique se a resposta é um array
+    if (!Array.isArray(data)) {
+      return thunkAPI.rejectWithValue("Data is not an array");
+    }
 
     return data;
   }
@@ -128,6 +130,11 @@ export const comment = createAsyncThunk(
 export const getPhotos = createAsyncThunk("photo/getall", async () => {
   const data = await photoService.getPhotos();
 
+    // Verifique se a resposta é um array
+    if (!Array.isArray(data)) {
+      throw new Error("Data is not an array");
+    }
+
   return data;
 });
 
@@ -181,7 +188,7 @@ export const photoSlice = createSlice({
         state.loading = false;
         state.success = true;
         state.error = null;
-        state.photos = action.payload;
+        state.photos = Array.isArray(action.payload) ? action.payload : [];
       })
       .addCase(getPhoto.pending, (state) => {
         state.loading = true;
@@ -277,11 +284,10 @@ export const photoSlice = createSlice({
         state.error = null;
       })
       .addCase(getPhotos.fulfilled, (state, action) => {
-        console.log(action.payload);
         state.loading = false;
         state.success = true;
         state.error = null;
-        state.photos = action.payload;
+        state.photos = Array.isArray(action.payload) ? action.payload : [];
       })
       .addCase(searchPhotos.pending, (state) => {
         state.loading = true;

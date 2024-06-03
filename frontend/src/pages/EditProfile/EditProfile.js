@@ -45,6 +45,8 @@ const Profile = () => {
     // Gather user data from states
     const userData = {
       name,
+      bio,
+      password,
     };
 
     if (profileImage) {
@@ -62,13 +64,19 @@ const Profile = () => {
     // build form data
     const formData = new FormData();
 
-    const userFormData = Object.keys(userData).forEach((key) =>
-      formData.append(key, userData[key])
-    );
+    // Append each key and value to the formData
+    Object.keys(userData).forEach((key) => {
+      if (userData[key]) {
+        formData.append(key, userData[key]);
+      }
+    });
 
-    formData.append("user", userFormData);
-
-    await dispatch(updateProfile(userFormData));
+    // Append profile image if it exists
+    if (profileImage) {
+      formData.append("profileImage", profileImage);
+    }
+    // Dispatch the update profile action
+    await dispatch(updateProfile(formData));
 
     setTimeout(() => {
       dispatch(resetMessage());
@@ -91,7 +99,7 @@ const Profile = () => {
       <p className="subtitle">
         Adicione uma imagem de perfil, e conte mais um pouco sobre você...
       </p>
-      {(user.profileImage || previewImage ) && (
+      {(user.profileImage || previewImage) && (
         <img
           className="profile-image"
           src={

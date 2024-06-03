@@ -1,6 +1,14 @@
+.container-background {
+  display: flex;
+  height: 100%;
+  background-color: #58559B;
+  z-index: -1;
+}
+
 #profile {
   width: 50%;
   margin: 0 auto;
+  z-index: 1;
 }
 
 .profile-header {
