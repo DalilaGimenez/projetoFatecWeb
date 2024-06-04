@@ -93,19 +93,21 @@ const Profile = () => {
     setProfileImage(image);
   };
 
+  const defaultProfile = require("../../images/default-profile.png");
+
   return (
     <div id="edit-profile">
-      <h2>Edite seus dados</h2>
+      <h2>EDITE SEUS DADOS</h2>
       <p className="subtitle">
         Adicione uma imagem de perfil, e conte mais um pouco sobre você...
       </p>
-      {(user.profileImage || previewImage) && (
+      {(user.profileImage || previewImage || defaultProfile ) && (
         <img
           className="profile-image"
           src={
-            previewImage
-              ? URL.createObjectURL(previewImage)
-              : `${uploads}/users/${user.profileImage}`
+            user.profileImage ? `${uploads}/users/${user.profileImage}` 
+            : previewImage ? URL.createObjectURL(previewImage) 
+            : defaultProfile
           }
           alt={user.name}
         />

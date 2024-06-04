@@ -1,14 +1,17 @@
 .container-background {
-  display: flex;
-  height: 100%;
+  width: 100%;
+  height: 70%;
   background-color: #58559B;
-  z-index: -1;
+  padding: 2em 0;
+  position: relative; /* Permite que o conteúdo filho seja posicionado corretamente */
 }
 
 #profile {
-  width: 50%;
+  width: 60%;
   margin: 0 auto;
   z-index: 1;
+  background-color: white;
+  padding: 1em;
 }
 
 .profile-header {
@@ -32,6 +35,7 @@
 }
 
 .photos-container {
+  background-color: white;
   display: flex;
   flex-wrap: wrap;
 }

@@ -139,13 +139,17 @@ const Profile = () => {
     return <p>Carregando...</p>;
   }
 
+  // Image
+const defaultProfile = require("../../images/default-profile.png");
+
   return (
-    <div className="container-background"><div/>
+    <div className="container-background">
       <div id="profile">
         <div className="profile-header">
-          {user.profileImage && (
-            <img src={`${uploads}/users/${user.profileImage}`} alt={user.name} />
-          )}
+          <img
+            src={user.profileImage ? `${uploads}/users/${user.profileImage}` : defaultProfile}
+            alt={user.name}
+          />
           <div className="profile-description">
             <h2>Olá, {user.name}</h2>
             <p>{user.bio}</p>
@@ -169,7 +173,7 @@ const Profile = () => {
                   <span>Imagem:</span>
                   <input type="file" onChange={handleFile} />
                 </label>
-                {loadingPhoto && <input type="submit" value="Postar" />}
+                {loadingPhoto && <input type="submit" value="POSTAR" />}
                 {!loadingPhoto && (
                   <input type="submit" disabled value="Aguarde..." />
                 )}
@@ -195,41 +199,40 @@ const Profile = () => {
             {errorPhoto && <Message msg={errorPhoto} type="error" />}
             {messagePhoto && <Message msg={messagePhoto} type="success" />}
           </>
-
         )}
-      </div>
-
-      <div className="user-photos">
-        <h2>Fotos publicadas:</h2>
-        <div className="photos-container">
-          {Array.isArray(photos) &&
-            photos.map((photo) => (
-              <div className="photo" key={photo._id}>
-                {photo.image && (
-                  <img
-                    src={`${uploads}/photos/${photo.image}`}
-                    alt={photo.title}
-                  />
-                )}
-                {id === userAuth._id ? (
-                  <div className="actions">
-                    <Link to={`/photos/${photo._id}`}>
-                      <BsFillEyeFill />
+        <div className="user-photos">
+          <h2>Fotos publicadas:</h2>
+          <div className="photos-container">
+            {Array.isArray(photos) &&
+              photos.map((photo) => (
+                <div className="photo" key={photo._id}>
+                  {photo.image && (
+                    <img
+                      src={`${uploads}/photos/${photo.image}`}
+                      alt={photo.title}
+                    />
+                  )}
+                  {id === userAuth._id ? (
+                    <div className="actions">
+                      <Link to={`/photos/${photo._id}`}>
+                        <BsFillEyeFill />
+                      </Link>
+                      <BsPencilFill onClick={() => handleEdit(photo)} />
+                      <BsXLg onClick={() => handleDelete(photo._id)} />
+                    </div>
+                  ) : (
+                    <Link className="btn" to={`/photos/${photo._id}`}>
+                      Ver
                     </Link>
-                    <BsPencilFill onClick={() => handleEdit(photo)} />
-                    <BsXLg onClick={() => handleDelete(photo._id)} />
-                  </div>
-                ) : (
-                  <Link className="btn" to={`/photos/${photo._id}`}>
-                    Ver
-                  </Link>
-                )}
-              </div>
-            ))}
-          {Array.isArray(photos) && photos.length === 0 && <p>Ainda não há fotos publicadas...</p>}
+                  )}
+                </div>
+              ))}
+            {Array.isArray(photos) && photos.length === 0 && <p>Ainda não há fotos publicadas...</p>}
+          </div>
         </div>
       </div>
     </div>
+
   );
 };
 
