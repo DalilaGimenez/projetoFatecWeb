@@ -23,7 +23,7 @@ const Search = () => {
   const resetMessage = useResetComponentMessage(dispatch);
 
   const { user } = useSelector((state) => state.auth);
-  const { photos, loading } = useSelector((state) => state.photo);
+  const { photos, loading, error } = useSelector((state) => state.photo);
 
   // Load all photos
   useEffect(() => {
@@ -40,10 +40,17 @@ const Search = () => {
     return <p>Carregando...</p>;
   }
 
+  if (error) {
+    return <p>Erro ao carregar fotos: {error}</p>;
+  }
+
   return (
     <div id="search">
       <h2>Cães para Adotar: {search}</h2>
       <p>Escolha um aumor para ser seu cãopanheiro...</p>
+
+
+      
       {Array.isArray(photos) &&
               photos.map((photo) => (
           <div key={photo._id}>
@@ -52,6 +59,8 @@ const Search = () => {
             <Link className="btn" to={`/photos/${photo._id}`}>
               Ver
             </Link>
+            <img src={`https://projetofatecweb.onrender.com/photos/${photo.image}`} alt={photo.title} />
+
           </div>
         ))}
     </div>

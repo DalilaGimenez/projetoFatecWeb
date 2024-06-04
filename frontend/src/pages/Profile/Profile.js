@@ -1,6 +1,6 @@
 import "./Profile.css";
 
-import { uploads } from "../../utils/config";
+import { api } from "../../utils/config";
 
 // components
 import Message from "../../components/Message";
@@ -140,14 +140,14 @@ const Profile = () => {
   }
 
   // Image
-const defaultProfile = require("../../images/default-profile.png");
+  const defaultProfile = require("../../images/default-profile.png");
 
   return (
     <div className="container-background">
       <div id="profile">
         <div className="profile-header">
           <img
-            src={user.profileImage ? `${uploads}/users/${user.profileImage}` : defaultProfile}
+            src={user.profileImage ? `${api}/api/users/${user.profileImage}` : defaultProfile}
             alt={user.name}
           />
           <div className="profile-description">
@@ -182,7 +182,7 @@ const defaultProfile = require("../../images/default-profile.png");
             <div className="edit-photo hide" ref={editPhotoForm}>
               <p>Editando:</p>
               {editImage && (
-                <img src={`${uploads}/photos/${editImage}`} alt={editTitle} />
+                <img src={`${api}/api/photos/${editImage}`} alt={editTitle} />
               )}
               <form onSubmit={handleUpdate}>
                 <input
@@ -208,7 +208,7 @@ const defaultProfile = require("../../images/default-profile.png");
                 <div className="photo" key={photo._id}>
                   {photo.image && (
                     <img
-                      src={`${uploads}/photos/${photo.image}`}
+                      src={`${api}/api/photos/${photo.image}`}
                       alt={photo.title}
                     />
                   )}
@@ -225,9 +225,10 @@ const defaultProfile = require("../../images/default-profile.png");
                       Ver
                     </Link>
                   )}
+                  {Array.isArray(photos) && photos.length === 0 && <p>Ainda não há fotos publicadas...</p>}
+
                 </div>
               ))}
-            {Array.isArray(photos) && photos.length === 0 && <p>Ainda não há fotos publicadas...</p>}
           </div>
         </div>
       </div>

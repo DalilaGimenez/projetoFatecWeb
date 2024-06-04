@@ -49,6 +49,10 @@ export const getUserPhotos = createAsyncThunk(
 export const getPhoto = createAsyncThunk("photo/getphoto", async (id) => {
   const data = await photoService.getPhoto(id);
 
+  if (!Array.isArray(data)) {
+    throw new Error("Data is not an array");
+  }
+
   return data;
 });
 
