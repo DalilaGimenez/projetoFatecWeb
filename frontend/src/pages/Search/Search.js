@@ -42,14 +42,15 @@ const Search = () => {
 
   return (
     <div id="search">
-      <h2>Você está buscando por: {search}</h2>
-      {photos &&
-        photos.map((photo) => (
+      <h2>Cães para Adotar: {search}</h2>
+      <p>Escolha um aumor para ser seu cãopanheiro...</p>
+      {Array.isArray(photos) &&
+              photos.map((photo) => (
           <div key={photo._id}>
             <PhotoItem photo={photo} />
             <LikeContainer photo={photo} user={user} handleLike={handleLike} />
             <Link className="btn" to={`/photos/${photo._id}`}>
-              Ver mais
+              Ver
             </Link>
           </div>
         ))}

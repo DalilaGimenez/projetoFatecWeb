@@ -3,7 +3,7 @@
   margin: 0 auto;
   padding-top: 2em;
   position: relative;
-  z-index: 2;
+  z-index: 1;
 }
 
 #home h1 {
@@ -30,7 +30,7 @@
 
 #home .btn {
   display: block;
-  max-width: 80px;
+  max-width: 300px;
   text-align: center;
   margin: 0.5em 0 2em 0;
   background-color: #00C9CC;
@@ -41,7 +41,7 @@
   overflow:auto;
   align-items: center;
   justify-content: center;
-  z-index: 1;
+  z-index: -1;
  }
 
  #divContent img {

@@ -36,9 +36,9 @@ function App() {
               path="/"
               element={<Home />}
             />
-            <Route
-              path="/profile"
-              element={auth ? <EditProfile /> : <Navigate to="/login" />}
+            <Route 
+            path="/profile/edit" 
+            element={auth ? <EditProfile /> : <Navigate to="/login" />}
             />
             <Route
               path="/profile"
@@ -54,7 +54,7 @@ function App() {
             />
             <Route
               path="/login"
-              element={!auth ? <Login /> : <Navigate to="/login" />}
+              element={!auth ? <Login /> : <Navigate to="/" />}
             />
             <Route
               path="/register"
