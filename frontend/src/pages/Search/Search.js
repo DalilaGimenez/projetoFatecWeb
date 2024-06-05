@@ -13,6 +13,7 @@ import { Link } from "react-router-dom";
 
 // Redux
 import { searchPhotos, like } from "../../slices/photoSlice";
+import { uploads } from "../../utils/config";
 
 const Search = () => {
   const query = useQuery();
@@ -59,7 +60,7 @@ const Search = () => {
             <Link className="btn" to={`/photos/${photo._id}`}>
               Ver
             </Link>
-            <img src={`https://projetofatecweb.onrender.com/photos/${photo.image}`} alt={photo.title} />
+            <img src={`${uploads}/photos/${photo.image}`} alt={photo.title} />
 
           </div>
         ))}

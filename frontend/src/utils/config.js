@@ -1,5 +1,5 @@
-export const api = "https://projetofatecweb.onrender.com";
-export const uploads = "https://projetofatecweb.onrender.com/uploads";
+export const api = "https://localhost:5000";
+export const uploads = "https://localhost:5000/uploads";
 
 export const requestConfig = (method, data = null, token = null, image = null) => {
   let config = {

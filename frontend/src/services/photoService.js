@@ -5,7 +5,7 @@ const publishPhoto = async (data, token) => {
   const config = requestConfig("POST", data, token, true);
 
   try {
-    const res = await fetch(api + "/photos", config)
+    const res = await fetch(api + "/photos/?=", config)
       .then((res) => res.json())
       .catch((err) => err);
 
@@ -31,11 +31,11 @@ const getUserPhotos = async (id) => {
 };
 
 // Get photo
-const getPhoto = async (id) => {
+const getPhoto = async (_id) => {
   const config = requestConfig("GET");
 
   try {
-    const res = await fetch(api + "/photos/" + id, config)
+    const res = await fetch(api + "/photos/" + _id, config)
       .then((res) => res.json())
       .catch((err) => err);
 
@@ -46,11 +46,11 @@ const getPhoto = async (id) => {
 };
 
 // Delete a photo
-const deletePhoto = async (id, token) => {
+const deletePhoto = async (_id, token) => {
   const config = requestConfig("DELETE", "", token);
 
   try {
-    const res = await fetch(api + "/photos/" + id, config)
+    const res = await fetch(api + "/photos/" + _id, config)
       .then((res) => res.json())
       .catch((err) => err);
 
@@ -61,11 +61,11 @@ const deletePhoto = async (id, token) => {
 };
 
 // Update a photo
-const updatePhoto = async (data, id, token) => {
+const updatePhoto = async (data, _id, token) => {
   const config = requestConfig("PUT", data, token);
 
   try {
-    const res = await fetch(api + "/photos/" + id, config)
+    const res = await fetch(api + "/photos/" + _id, config)
       .then((res) => res.json())
       .catch((err) => err);
 
@@ -76,11 +76,11 @@ const updatePhoto = async (data, id, token) => {
 };
 
 // Like a photo
-const like = async (id, token) => {
+const like = async (_id, token) => {
   const config = requestConfig("PUT", null, token);
 
   try {
-    const res = await fetch(api + "/photos/like/" + id, config)
+    const res = await fetch(api + "/photos/like/" + _id, config)
       .then((res) => res.json())
       .catch((err) => err);
 
@@ -91,11 +91,11 @@ const like = async (id, token) => {
 };
 
 // Add a comment to a photo
-const comment = async (data, id, token) => {
+const comment = async (data, _id, token) => {
   const config = requestConfig("PUT", data, token);
 
   try {
-    const res = await fetch(api + "/photos/comment/" + id, config)
+    const res = await fetch(api + "/photos/comment/" + _id, config)
       .then((res) => res.json())
       .catch((err) => err);
 
@@ -110,7 +110,7 @@ const getPhotos = async () => {
   const config = requestConfig("GET");
 
   try {
-    const res = await fetch(`${api}/photos`, config)
+    const res = await fetch(`${api}/photos/photos`, config)
       .then((res) => res.json())
       .catch((err) => err);
 
