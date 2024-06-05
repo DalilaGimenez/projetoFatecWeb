@@ -37,7 +37,7 @@ function App() {
               element={<Home />}
             />
             <Route 
-            path="/profile/edit" 
+            path="/profile" 
             element={auth ? <EditProfile /> : <Navigate to="/login" />}
             />
             <Route

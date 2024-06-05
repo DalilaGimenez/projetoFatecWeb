@@ -5,7 +5,7 @@ const publishPhoto = async (data, token) => {
   const config = requestConfig("POST", data, token, true);
 
   try {
-    const res = await fetch(api + "api/photos", config)
+    const res = await fetch(api + "/photos", config)
       .then((res) => res.json())
       .catch((err) => err);
 
@@ -20,7 +20,7 @@ const getUserPhotos = async (id) => {
   const config = requestConfig("GET");
 
   try {
-    const res = await fetch(api + "api/photos/user/" + id, config)
+    const res = await fetch(api + "/photos/user/" + id, config)
       .then((res) => res.json())
       .catch((err) => err);
 
@@ -35,7 +35,7 @@ const getPhoto = async (id) => {
   const config = requestConfig("GET");
 
   try {
-    const res = await fetch(api + "api/photos/" + id, config)
+    const res = await fetch(api + "/photos/" + id, config)
       .then((res) => res.json())
       .catch((err) => err);
 
@@ -50,7 +50,7 @@ const deletePhoto = async (id, token) => {
   const config = requestConfig("DELETE", "", token);
 
   try {
-    const res = await fetch(api + "api/photos/" + id, config)
+    const res = await fetch(api + "/photos/" + id, config)
       .then((res) => res.json())
       .catch((err) => err);
 
@@ -65,7 +65,7 @@ const updatePhoto = async (data, id, token) => {
   const config = requestConfig("PUT", data, token);
 
   try {
-    const res = await fetch(api + "api/photos/" + id, config)
+    const res = await fetch(api + "/photos/" + id, config)
       .then((res) => res.json())
       .catch((err) => err);
 
@@ -80,7 +80,7 @@ const like = async (id, token) => {
   const config = requestConfig("PUT", null, token);
 
   try {
-    const res = await fetch(api + "api/photos/like/" + id, config)
+    const res = await fetch(api + "/photos/like/" + id, config)
       .then((res) => res.json())
       .catch((err) => err);
 
@@ -95,7 +95,7 @@ const comment = async (data, id, token) => {
   const config = requestConfig("PUT", data, token);
 
   try {
-    const res = await fetch(api + "api/photos/comment/" + id, config)
+    const res = await fetch(api + "/photos/comment/" + id, config)
       .then((res) => res.json())
       .catch((err) => err);
 
@@ -110,7 +110,7 @@ const getPhotos = async () => {
   const config = requestConfig("GET");
 
   try {
-    const res = await fetch(`${api}/api/photos`, config)
+    const res = await fetch(`${api}/photos`, config)
       .then((res) => res.json())
       .catch((err) => err);
 
@@ -125,7 +125,7 @@ const searchPhotos = async (query) => {
   const config = requestConfig("GET");
 
   try {
-  const res = await fetch(`${api}/api/photos/search?q=${query}`, config)
+  const res = await fetch(`${api}/photos/search?q=${query}`, config)
   .then((res) => res.json())
   .catch((err) => err);
 

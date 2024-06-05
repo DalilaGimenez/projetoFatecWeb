@@ -13,7 +13,7 @@ app.use(express.urlencoded({extended: false}));
 
 //solve cors
 app.use(cors()) // habilita o CORS
-app.use(cors({ credentials: true, origin: ['http://localhost:3000', 'https://projetofatecweb.onrender.com']}));
+//app.use(cors({ credentials: true, origin: ['http://localhost:3000', 'https://projetofatecweb.onrender.com']}));
 
 //upload directory
 app.use("/uploads", express.static(path.join(__dirname, "/uploads")));

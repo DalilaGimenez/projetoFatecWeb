@@ -97,7 +97,7 @@ const Profile = () => {
 
   return (
     <div id="edit-profile">
-      <h2>EDITE SEUS DADOS</h2>
+      <h2>Edite seus Dados</h2>
       <p className="subtitle">
         Adicione uma imagem de perfil, e conte mais um pouco sobre você...
       </p>
