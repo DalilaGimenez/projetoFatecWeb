@@ -13,7 +13,7 @@ import { Link } from "react-router-dom";
 
 // Redux
 import { searchPhotos, like } from "../../slices/photoSlice";
-import { uploads } from "../../utils/config";
+import { api } from "../../utils/config";
 
 const Search = () => {
   const query = useQuery();
@@ -49,9 +49,6 @@ const Search = () => {
     <div id="search">
       <h2>Cães para Adotar: {search}</h2>
       <p>Escolha um aumor para ser seu cãopanheiro...</p>
-
-
-      
       {Array.isArray(photos) &&
               photos.map((photo) => (
           <div key={photo._id}>
@@ -60,7 +57,7 @@ const Search = () => {
             <Link className="btn" to={`/photos/${photo._id}`}>
               Ver
             </Link>
-            <img src={`${uploads}/photos/${photo.image}`} alt={photo.title} />
+            <img src={`${api}/photos/${photo.image}`} alt={photo.title} />
 
           </div>
         ))}

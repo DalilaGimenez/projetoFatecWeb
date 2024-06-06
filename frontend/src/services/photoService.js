@@ -16,8 +16,8 @@ const publishPhoto = async (data, token) => {
 };
 
 // Get user photos
-const getUserPhotos = async (id) => {
-  const config = requestConfig("GET");
+const getUserPhotos = async (id, token) => {
+  const config = requestConfig("GET", null, token);
 
   try {
     const res = await fetch(api + "/photos/user/" + id, config)
@@ -31,8 +31,8 @@ const getUserPhotos = async (id) => {
 };
 
 // Get photo
-const getPhoto = async (_id) => {
-  const config = requestConfig("GET");
+const getPhoto = async (_id, token) => {
+  const config = requestConfig("GET", null, token);
 
   try {
     const res = await fetch(api + "/photos/" + _id, config)
@@ -47,7 +47,7 @@ const getPhoto = async (_id) => {
 
 // Delete a photo
 const deletePhoto = async (_id, token) => {
-  const config = requestConfig("DELETE", "", token);
+  const config = requestConfig("DELETE", null, token);
 
   try {
     const res = await fetch(api + "/photos/" + _id, config)
@@ -106,8 +106,8 @@ const comment = async (data, _id, token) => {
 };
 
 // Get all photos
-const getPhotos = async () => {
-  const config = requestConfig("GET");
+const getPhotos = async (token) => {
+  const config = requestConfig("GET", null, token);
 
   try {
     const res = await fetch(`${api}/photos/photos`, config)
@@ -121,8 +121,8 @@ const getPhotos = async () => {
 };
 
 // Search photos by title
-const searchPhotos = async (query) => {
-  const config = requestConfig("GET");
+const searchPhotos = async (query, token) => {
+  const config = requestConfig("GET", null, token);
 
   try {
   const res = await fetch(`${api}/photos/search?q=${query}`, config)

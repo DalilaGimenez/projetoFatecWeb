@@ -47,6 +47,16 @@ body {
     outline: none;
     margin-bottom: 0.6em;
   }
+
+  select {
+    background-color: #ddd;
+    color: #555;
+    border: 1px solid #555;
+    border-radius: 10px;
+    padding: 10px 8px;
+    outline: none;
+    margin-bottom: 0.6em;
+  }
   
   input::placeholder {
     color: #555;

@@ -82,6 +82,8 @@ export const updatePhoto = createAsyncThunk(
 
     const data = await photoService.updatePhoto(
       { title: photoData.title },
+      { gender: photoData.gender },
+      { size: photoData.size },
       photoData.id,
       token
     );
@@ -176,7 +178,7 @@ export const photoSlice = createSlice({
         state.success = true;
         state.error = null;
         state.photo = action.payload;
-        state.photos.unshift(state.photo);
+        state.photos = [state.photo, ...state.photos];
         state.message = "Foto publicada com sucesso!";
       })
       .addCase(publishPhoto.rejected, (state, action) => {

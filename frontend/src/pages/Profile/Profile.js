@@ -37,11 +37,16 @@ const Profile = () => {
   } = useSelector((state) => state.photo);
 
   const [title, setTitle] = useState("");
+  const [gender, setGender] = useState("");
+  const [size, setSize] = useState("");
   const [image, setImage] = useState("");
 
   const [editId, setEditId] = useState();
   const [editImage, setEditImage] = useState();
   const [editTitle, setEditTitle] = useState();
+  const [editGender, setEditGender] = useState();
+  const [editSize, setEditSize] = useState();
+
 
   // New form and edit form refs
   const newPhotoForm = useRef();
@@ -66,6 +71,8 @@ const Profile = () => {
 
     const photoData = {
       title,
+      gender,
+      size,
       image,
     };
 
@@ -81,6 +88,8 @@ const Profile = () => {
     dispatch(publishPhoto(formData));
 
     setTitle("");
+    setGender("");
+    setSize("");
 
     resetComponentMessage();
   };
@@ -88,7 +97,6 @@ const Profile = () => {
   // change image state
   const handleFile = (e) => {
     const image = e.target.files[0];
-
     setImage(image);
   };
 
@@ -114,6 +122,8 @@ const Profile = () => {
     setEditId(photo._id);
     setEditImage(photo.image);
     setEditTitle(photo.title);
+    setEditGender(photo.gender);
+    setEditSize(photo.size);
   };
 
   // Cancel editing
@@ -127,6 +137,8 @@ const Profile = () => {
 
     const photoData = {
       title: editTitle,
+      gender: editGender,
+      size: editSize,
       id: editId,
     };
 
@@ -147,7 +159,7 @@ const Profile = () => {
       <div id="profile">
         <div className="profile-header">
           <img
-            src={user.profileImage ? `${api}/api/users/${user.profileImage}` : defaultProfile}
+            src={user.profileImage ? `${api}/users/${user.profileImage}` : defaultProfile}
             alt={user.name}
           />
           <div className="profile-description">
@@ -170,11 +182,30 @@ const Profile = () => {
                   />
                 </label>
                 <label>
+                  <span>Sexo do Cão:</span>
+                  <select
+                    onChange={(e) => setGender(e.target.value)}
+                    value={gender || ""}>
+                    <option value="m">Macho</option>
+                    <option value="f">Fêmea</option>
+                  </select>
+                </label>
+                <label>
+                  <span>Porte do Cão:</span>
+                  <select
+                    onChange={(e) => setSize(e.target.value)}
+                    value={size || ""}>
+                    <option value="p">Pequeno</option>
+                    <option value="m">Médio</option>
+                    <option value="g">Grande</option>
+                  </select>
+                </label>
+                <label>
                   <span>Imagem:</span>
                   <input type="file" onChange={handleFile} />
                 </label>
-                {loadingPhoto && <input type="submit" value="POSTAR" />}
-                {!loadingPhoto && (
+                {!loadingPhoto && <input type="submit" value="POSTAR" />}
+                {loadingPhoto && (
                   <input type="submit" disabled value="Aguarde..." />
                 )}
               </form>
@@ -182,7 +213,7 @@ const Profile = () => {
             <div className="edit-photo hide" ref={editPhotoForm}>
               <p>Editando:</p>
               {editImage && (
-                <img src={`${api}/api/photos/${editImage}`} alt={editTitle} />
+                <img src={`${api}/photos/${editImage}`} alt={editTitle} />
               )}
               <form onSubmit={handleUpdate}>
                 <input
@@ -199,7 +230,8 @@ const Profile = () => {
             {errorPhoto && <Message msg={errorPhoto} type="error" />}
             {messagePhoto && <Message msg={messagePhoto} type="success" />}
           </>
-        )}
+        )
+        }
         <div className="user-photos">
           <h2>Fotos publicadas:</h2>
           <div className="photos-container">
@@ -208,7 +240,7 @@ const Profile = () => {
                 <div className="photo" key={photo._id}>
                   {photo.image && (
                     <img
-                      src={`${api}/api/photos/${photo.image}`}
+                      src={`${api}/photos/${photo.image.fileName}`}
                       alt={photo.title}
                     />
                   )}
@@ -225,14 +257,16 @@ const Profile = () => {
                       Ver
                     </Link>
                   )}
+                  <p>{photo.title}</p>
+                  <p>{photo.gender}</p>
+                  <p>{photo.size}</p>
                   {Array.isArray(photos) && photos.length === 0 && <p>Ainda não há fotos publicadas...</p>}
-
                 </div>
               ))}
           </div>
         </div>
-      </div>
-    </div>
+      </div >
+    </div >
 
   );
 };
