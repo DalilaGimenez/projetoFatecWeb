@@ -1,0 +1,30 @@
+/* PhotoGrid.css */
+#photo-grid {
+    text-align: center;
+  }
+  
+  .grid-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+  }
+  
+  .grid-item {
+    flex: 1 1 calc(33.333% - 16px);
+    box-sizing: border-box;
+  }
+  
+  .grid-item img {
+    width: 100%;
+    height: auto;
+  }
+  
+  form {
+    margin-bottom: 16px;
+  }
+  
+  button {
+    margin-top: 16px;
+  }
+  

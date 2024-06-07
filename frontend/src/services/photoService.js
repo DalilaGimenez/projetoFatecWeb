@@ -106,11 +106,11 @@ const comment = async (data, _id, token) => {
 };
 
 // Get all photos
-const getPhotos = async (token) => {
+const getPhotos = async (token, page = 1) => {
   const config = requestConfig("GET", null, token);
 
   try {
-    const res = await fetch(`${api}/photos/photos`, config)
+    const res = await fetch(`${api}/photos/photos?page=${page}`, config)
       .then((res) => res.json())
       .catch((err) => err);
 
@@ -121,11 +121,11 @@ const getPhotos = async (token) => {
 };
 
 // Search photos by title
-const searchPhotos = async (query, token) => {
+const searchPhotos = async (query, page = 1, token) => {
   const config = requestConfig("GET", null, token);
 
   try {
-  const res = await fetch(`${api}/photos/search?q=${query}`, config)
+  const res = await fetch(`${api}/photos/search?q=${query}&page=${page}`, config)
   .then((res) => res.json())
   .catch((err) => err);
 

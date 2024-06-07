@@ -7,13 +7,13 @@ import { useSelector, useDispatch } from "react-redux";
 import { useResetComponentMessage } from "../../hooks/useResetComponentMessage";
 
 // components
-import LikeContainer from "../../components/LikeContainer";
-import PhotoItem from "../../components/PhotoItem";
 import { Link } from "react-router-dom";
+import PhotoGrid from "../../components/PhotoGrid";
+
 
 // Redux
 import { searchPhotos, like } from "../../slices/photoSlice";
-import { api } from "../../utils/config";
+
 
 const Search = () => {
   const query = useQuery();
@@ -50,15 +50,9 @@ const Search = () => {
       <h2>Cães para Adotar: {search}</h2>
       <p>Escolha um aumor para ser seu cãopanheiro...</p>
       {Array.isArray(photos) &&
-              photos.map((photo) => (
+        photos.map((photo) => (
           <div key={photo._id}>
-            <PhotoItem photo={photo} />
-            <LikeContainer photo={photo} user={user} handleLike={handleLike} />
-            <Link className="btn" to={`/photos/${photo._id}`}>
-              Ver
-            </Link>
-            <img src={`${api}/photos/${photo.image}`} alt={photo.title} />
-
+            <PhotoGrid searchQuery={search} />
           </div>
         ))}
     </div>

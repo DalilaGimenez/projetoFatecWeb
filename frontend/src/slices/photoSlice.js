@@ -8,6 +8,7 @@ const initialState = {
   success: false,
   loading: false,
   message: null,
+  page: 1,
 };
 
 // Publish an user's photo
@@ -133,8 +134,8 @@ export const comment = createAsyncThunk(
 );
 
 // Get all photos
-export const getPhotos = createAsyncThunk("photo/getall", async () => {
-  const data = await photoService.getPhotos();
+export const getPhotos = createAsyncThunk("photo/getall", async (page) => {
+  const data = await photoService.getPhotos(page);
 
     // Verifique se a resposta é um array
     if (!Array.isArray(data)) {
@@ -147,13 +148,14 @@ export const getPhotos = createAsyncThunk("photo/getall", async () => {
 // Search photos by title
 export const searchPhotos = createAsyncThunk(
   "photo/search",
-  async (query, thunkAPI) => {
+  async (query, page, thunkAPI) => {
     const token = thunkAPI.getState().auth.user.token;
 
-    const data = await photoService.searchPhotos(query, token);
+    const data = await photoService.searchPhotos(query, page, token);
 
-    console.log(data);
-    console.log(data.errors);
+    if (!Array.isArray(data)) {
+      throw new Error("Data is not an array");
+    }
 
     return data;
   }
@@ -165,6 +167,12 @@ export const photoSlice = createSlice({
   reducers: {
     resetMessage: (state) => {
       state.message = null;
+    },
+    incrementPage: (state) => {
+      state.page += 1;
+    },
+    resetPage: (state) => {
+      state.page = 1;
     },
   },
   extraReducers: (builder) => {
@@ -309,5 +317,5 @@ export const photoSlice = createSlice({
   },
 });
 
-export const { resetMessage } = photoSlice.actions;
+export const { resetMessage, incrementPage, resetPage } = photoSlice.actions;
 export default photoSlice.reducer;
