@@ -8,11 +8,14 @@ const PhotoItem = ({ photo }) => {
   return (
     <div className="photo-item">
       {photo.image && (
-        <img src={`${api}/photos/${photo.image.fileName}`} alt={photo.title} />
+        <img src={`${api}/uploads/photos/${photo.image}`} alt={photo.title} />
       )}
       <h2>{photo.title}</h2>
       <p className="photo-author">
         <Link to={`/users/${photo.userId}`}>Publicada por: {photo.userName}</Link>
+      </p>
+      <p>
+        <Link to={`/photo/${photo.like}`}>Publicada por: {photo.like}</Link>
       </p>
     </div>
   );

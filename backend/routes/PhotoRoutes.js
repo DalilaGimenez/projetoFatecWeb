@@ -25,8 +25,7 @@ const {
 const { imageUpload } = require("../middlewares/imageUpload");
 
 // Routes
-router.post(
-  "/",
+router.post("/",
   authGuard,
   imageUpload.single("image"),
   photoInsertValidation(),
@@ -34,10 +33,10 @@ router.post(
   insertPhoto
 );
 router.delete("/:id", authGuard, deletePhoto);
-router.get("/photos", authGuard, getAllPhotos);
+
+router.get("/", authGuard, getAllPhotos);
 router.get("/user/:id", authGuard, getUserPhotos);
 router.get("/search", authGuard, searchPhotos);
-
 router.get("/:id", authGuard, getPhotoById);
 
 router.put(

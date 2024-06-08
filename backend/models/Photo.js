@@ -2,8 +2,8 @@ const mongoose = require("mongoose");
 const {Schema} = mongoose;
 
 const photoSchema = new Schema({
-    image: String,
-    title: String,
+    title: { type: String, required: true },
+    image: { type: String, required: true },
     likes: Array,
     comments: Array,
     userId: mongoose.ObjectId,

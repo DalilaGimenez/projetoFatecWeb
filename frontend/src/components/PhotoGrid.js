@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getPhotos, searchPhotos, incrementPage, resetPage } from "../slices/photoSlice";
+import { resetPage, searchPhotos, getPhotos, incrementPage } from "../slices/photoSlice";
 import PhotoItem from "./PhotoItem";
 import { api } from "../utils/config";
-import "./PhotoGrid.css";
 
 const PhotoGrid = ({ searchQuery }) => {
   const dispatch = useDispatch();
@@ -16,9 +15,15 @@ const PhotoGrid = ({ searchQuery }) => {
       dispatch(resetPage());
       dispatch(searchPhotos({ query, page: 1 }));
     } else {
-      dispatch(getPhotos(page));
+      dispatch(getPhotos());
     }
-  }, [dispatch, query, page]);
+  }, [dispatch, query]);
+
+  useEffect(() => {
+    if (!query) {
+      dispatch(getPhotos());
+    }
+  }, [dispatch, page]);
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -30,7 +35,7 @@ const PhotoGrid = ({ searchQuery }) => {
     dispatch(incrementPage());
   };
 
-  if (loading) return <p>Carregando...</p>;
+  //if (loading) return <p>Carregando...</p>;
   if (error) return <p>Erro ao carregar fotos: {error}</p>;
 
   return (
@@ -49,10 +54,8 @@ const PhotoGrid = ({ searchQuery }) => {
       <div className="grid-container">
         {photos.map((photo, index) => (
           <div className="grid-item" key={index}>
+            <p></p>
             <PhotoItem photo={photo} />
-            <img src={`${api}/photos/${photo.image}`} alt={photo.title} />
-            <img src={`${api}/uploads/photos/${photo.image}`} alt={photo.title} />
-
           </div>
         ))}
       </div>

@@ -1,5 +1,16 @@
+.photo-item {
+  width: 50%;
+  height: 350px;
+  justify-items: baseline;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.1); /* borda suave */
+  background-color: rgba(0, 128, 0, 0.1);
+}
+
 .photo-item img {
   width: 100%;
+  height: auto;
+  object-fit: cover;
 }
 
 #home .photo-item h2 {

@@ -134,29 +134,28 @@ export const comment = createAsyncThunk(
 );
 
 // Get all photos
-export const getPhotos = createAsyncThunk("photo/getall", async (page) => {
-  const data = await photoService.getPhotos(page);
-
-    // Verifique se a resposta é um array
+export const getPhotos = createAsyncThunk(
+  "photo/getall",
+  async (_, thunkAPI) => {
+    const token = thunkAPI.getState().auth.user.token;
+    const page = thunkAPI.getState().photo.page;
+    const data = await photoService.getPhotos(token, page);
     if (!Array.isArray(data)) {
       throw new Error("Data is not an array");
     }
-
-  return data;
-});
+    return data;
+  }
+);
 
 // Search photos by title
 export const searchPhotos = createAsyncThunk(
   "photo/search",
-  async (query, page, thunkAPI) => {
+  async ({ query, page }, thunkAPI) => {
     const token = thunkAPI.getState().auth.user.token;
-
     const data = await photoService.searchPhotos(query, page, token);
-
     if (!Array.isArray(data)) {
       throw new Error("Data is not an array");
     }
-
     return data;
   }
 );

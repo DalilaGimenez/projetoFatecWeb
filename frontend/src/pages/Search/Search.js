@@ -33,13 +33,12 @@ const Search = () => {
 
   const handleLike = (photo = null) => {
     dispatch(like(photo._id));
-
     resetMessage();
   };
 
-  if (loading) {
+  /*if (loading) {
     return <p>Carregando...</p>;
-  }
+  }*/
 
   if (error) {
     return <p>Erro ao carregar fotos: {error}</p>;
@@ -49,12 +48,7 @@ const Search = () => {
     <div id="search">
       <h2>Cães para Adotar: {search}</h2>
       <p>Escolha um aumor para ser seu cãopanheiro...</p>
-      {Array.isArray(photos) &&
-        photos.map((photo) => (
-          <div key={photo._id}>
-            <PhotoGrid searchQuery={search} />
-          </div>
-        ))}
+            <PhotoGrid searchQuery={search}/>
     </div>
   );
 };

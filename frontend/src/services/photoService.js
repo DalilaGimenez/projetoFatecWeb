@@ -1,4 +1,4 @@
-import { api, requestConfig } from "../utils/config";
+import { api, requestConfig, uploads } from "../utils/config";
 /*{`https://projetofatecweb.onrender.com/uploads/${photo.image}`}*/
 // Publish an user's photo
 const publishPhoto = async (data, token) => {
@@ -110,7 +110,7 @@ const getPhotos = async (token, page = 1) => {
   const config = requestConfig("GET", null, token);
 
   try {
-    const res = await fetch(`${api}/photos/photos?page=${page}`, config)
+    const res = await fetch(`${api}/photos?page=${page}`, config)
       .then((res) => res.json())
       .catch((err) => err);
 
@@ -125,14 +125,14 @@ const searchPhotos = async (query, page = 1, token) => {
   const config = requestConfig("GET", null, token);
 
   try {
-  const res = await fetch(`${api}/photos/search?q=${query}&page=${page}`, config)
-  .then((res) => res.json())
-  .catch((err) => err);
+    const res = await fetch(`${api}/photos/search?q=${query}&page=${page}`, config)
+      .then((res) => res.json())
+      .catch((err) => err);
 
-return res;
-} catch (error) {
-console.log(error);
-}
+    return res;
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 const photoService = {

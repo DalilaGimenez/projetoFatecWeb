@@ -239,15 +239,13 @@ const Profile = () => {
               photos.map((photo) => (
                 <div className="photo" key={photo._id}>
                   {photo.image && (
-                    <img
-                      src={`${api}/photos/${photo.image.fileName}`}
-                      alt={photo.title}
-                    />
+                    <img src={`${api}/uploads/photos/${photo.image}`} alt={photo.title} />
                   )}
+                  <p>{photo.title}</p>
                   {id === userAuth._id ? (
                     <div className="actions">
                       <Link to={`/photos/${photo._id}`}>
-                        <BsFillEyeFill />
+                        <BsFillEyeFill color="black"/>
                       </Link>
                       <BsPencilFill onClick={() => handleEdit(photo)} />
                       <BsXLg onClick={() => handleDelete(photo._id)} />
@@ -257,9 +255,6 @@ const Profile = () => {
                       Ver
                     </Link>
                   )}
-                  <p>{photo.title}</p>
-                  <p>{photo.gender}</p>
-                  <p>{photo.size}</p>
                   {Array.isArray(photos) && photos.length === 0 && <p>Ainda não há fotos publicadas...</p>}
                 </div>
               ))}

@@ -8,6 +8,8 @@
     flex-wrap: wrap;
     gap: 16px;
     justify-content: center;
+    width: 80%;
+    background-color: aquamarine;
   }
   
   .grid-item {
