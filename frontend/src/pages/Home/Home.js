@@ -7,6 +7,8 @@ import { useAuth } from "../../hooks/useAuth";
 import { Link } from "react-router-dom";
 
 import imageBackground from "../../images/imageBackgroundHome.png";
+import pawImageBackground from "../../images/paw-image-background.png";
+
 
 const Home = () => {
   const { auth } = useAuth();
@@ -15,16 +17,22 @@ const Home = () => {
     <>
       <div id="divContent">
         <img src={imageBackground} alt="Home's Backgraund" />
-      </div>
+        </div>
+      
       <div id="home">
-        <h2>Seja bem vindo ao</h2>
-        <h1>Cãonecta Aumor</h1>
-        <p>O seu destino online para encontrar o seu parceiro canino perfeito!
-          Aqui, unimos corações peludos a lares amorosos, proporcionando uma plataforma onde pessoas e cães se encontram para uma vida cheia de alegria e amor mútuo.</p>
-        <p>Navegue por perfis de <b>cães adoráveis</b> disponíveis para <b>adoção</b>,
-          conheça suas personalidades únicas e encontre aquele que se encaixa
-          perfeitamente no seu estilo de vida e preferências.
-        </p>
+        <div id="container-row">
+          <img src={pawImageBackground} alt="Paw Image"/>
+          <div className="div1">
+          <h2>Seja bem vindo ao</h2>
+          <h1>Cãonecta Aumor</h1>
+          </div>
+          <p>O seu destino online para encontrar o <a>seu parceiro canino perfeito</a>!<br/>
+            Aqui, unimos corações peludos a lares amorosos, proporcionando uma plataforma onde pessoas e cães se encontram para uma vida cheia de alegria e amor mútuo.</p>
+        </div>
+      <p>Navegue por perfis de <a>cães adoráveis</a> disponíveis para <a>adoção</a>,
+        conheça suas personalidades únicas e encontre aquele que se encaixa
+        perfeitamente no seu estilo de vida e preferências.
+      </p>
         {auth ? (
           <>
             <div>

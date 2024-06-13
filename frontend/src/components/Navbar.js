@@ -49,12 +49,12 @@ const Navbar = () => {
   return (
     <nav id="nav">
       
-      <Link className="logo" to="/">
-        <img className="profile-image"
+      <Link id="logo" to="/">
+        <img id="logo"
           src={logo}
           alt="Logo Cãonecta AUmor"
         />
-        <div className="logo">
+        <div id="logo">
         <h2>Cãonecta</h2>
         <h2>AUmor</h2>
         </div>

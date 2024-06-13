@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { resetPage, searchPhotos, getPhotos, incrementPage } from "../slices/photoSlice";
 import PhotoItem from "./PhotoItem";
 import { api } from "../utils/config";
+import Photo from "../pages/Photo/Photo";
 
 const PhotoGrid = ({ searchQuery }) => {
   const dispatch = useDispatch();
@@ -32,7 +33,7 @@ const PhotoGrid = ({ searchQuery }) => {
   };
 
   const loadMorePhotos = () => {
-    dispatch(incrementPage());
+    dispatch(incrementPage(Photo));
   };
 
   //if (loading) return <p>Carregando...</p>;

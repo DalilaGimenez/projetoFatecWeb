@@ -1,6 +1,6 @@
 import "./Photo.css";
 
-import { uploads } from "../../utils/config";
+import { api } from "../../utils/config";
 
 // components
 import Message from "../../components/Message";
@@ -59,9 +59,9 @@ const Photo = () => {
     resetMessage();
   };
 
-  if (loading) {
+  /*if (loading) {
     return <p>Carregando...</p>;
-  }
+  }*/
 
   return (
     <div id="photo">
@@ -90,12 +90,12 @@ const Photo = () => {
                 <div className="author">
                   {comment.userImage && (
                     <img
-                      src={`${uploads}/users/${comment.userImage}`}
+                      src={`${api}/users/${comment.userImage}`}
                       alt={comment.userName}
                     />
                   )}
                   <Link to={`/users/${comment.userId}`}>
-                    <p>{comment.userName}</p>
+                    <p color="black">{comment.userName}</p>
                   </Link>
                 </div>
                 <p>{comment.comment}</p>
@@ -103,6 +103,9 @@ const Photo = () => {
             ))}
           </>
         )}
+        <Link className="btn" to={`/photos/${photo._id}`}>
+          Ver mais teste
+        </Link>
       </div>
     </div>
   );

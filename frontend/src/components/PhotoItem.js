@@ -14,9 +14,9 @@ const PhotoItem = ({ photo }) => {
       <p className="photo-author">
         <Link to={`/users/${photo.userId}`}>Publicada por: {photo.userName}</Link>
       </p>
-      <p>
-        <Link to={`/photo/${photo.like}`}>Publicada por: {photo.like}</Link>
-      </p>
+      <Link className="btn" to={`/photos/${photo._id}`}>
+              Ver mais
+            </Link>
     </div>
   );
 };

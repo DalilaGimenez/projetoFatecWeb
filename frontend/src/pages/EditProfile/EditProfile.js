@@ -1,6 +1,6 @@
 import "./EditProfile.css";
 
-import { uploads } from "../../utils/config";
+import { api } from "../../utils/config";
 
 // Hooks
 import { useEffect, useState } from "react";
@@ -105,7 +105,7 @@ const Profile = () => {
         <img
           className="profile-image"
           src={
-            user.profileImage ? `${uploads}/users/${user.profileImage}` 
+            user.profileImage ? `${api}/uploads/users/${user.profileImage}` 
             : previewImage ? URL.createObjectURL(previewImage) 
             : defaultProfile
           }

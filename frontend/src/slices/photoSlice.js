@@ -46,17 +46,6 @@ export const getUserPhotos = createAsyncThunk(
   }
 );
 
-// Get photo
-export const getPhoto = createAsyncThunk("photo/getphoto", async (id) => {
-  const data = await photoService.getPhoto(id);
-
-  if (!Array.isArray(data)) {
-    throw new Error("Data is not an array");
-  }
-
-  return data;
-});
-
 // Delete a photo
 export const deletePhoto = createAsyncThunk(
   "photo/delete",
@@ -99,7 +88,8 @@ export const updatePhoto = createAsyncThunk(
 );
 
 // Like a photo
-export const like = createAsyncThunk("photo/like", async (id, thunkAPI) => {
+export const like = createAsyncThunk("photo/like", 
+async (id, thunkAPI) => {
   const token = thunkAPI.getState().auth.user.token;
 
   const data = await photoService.like(id, token);
@@ -129,6 +119,37 @@ export const comment = createAsyncThunk(
       return thunkAPI.rejectWithValue(data.errors[0]);
     }
 
+    return data;
+  }
+);
+
+
+/*/ Get photo
+export const getPhoto = createAsyncThunk("photo/getphoto", 
+async (_id, thunkAPI) => {
+  const token = thunkAPI.getState().auth.user.token;
+  const data = await photoService.getPhoto(token, _id);
+
+  if (!Array.isArray(data)) {
+    throw new Error("Data is not an array");
+  }
+
+  return data;
+});*/
+
+// Get photo
+export const getPhoto = createAsyncThunk(
+  "photo/getphoto",
+  async (id, thunkAPI) => {
+    const token = thunkAPI.getState().auth.user.token;
+
+    const data = await photoService.getPhoto(id, token);
+  
+    // Check for errors
+    if (data.errors) {
+      return thunkAPI.rejectWithValue(data.errors[0]);
+    }
+  
     return data;
   }
 );

@@ -1,26 +1,36 @@
 #home {
-  width: 50%;
-  margin: 0 auto;
+  width: 90%;
+  max-height: 90%;
+  margin: 2em auto;
   padding-top: 2em;
   position: relative;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.8); /* fundo branco transparente */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* sombra suave */
   z-index: 1;
 }
 
 #home h1 {
   color: #58559B;
+  font-size: 2em;
+  margin: 0;
+  padding: 0;
 }
 
 #home h2 {
   text-align: justify;
-  font-size: 2.1em;
-  margin-top: 0;
+  font-size: 2em;
+  margin: 0;
+  padding: 0;
   color: #FF6047;
 }
 
 #home p {
-  font-weight: bold;
-  color: #999;
+  font-size:large;
+  color: #363636;
   margin-bottom: 1.5em;
+  margin-left: 2em;
+  text-align: center;
 }
 
 #home p a {
@@ -28,12 +38,40 @@
   color: #00C9CC;
 }
 
-#home .btn {
-  display: block;
-  max-width: 300px;
+.btn {
+  display: flex;
+  width: 50%;
   text-align: center;
-  margin: 0.5em 0 2em 0;
+  justify-content: center;
+  margin: 2em;
   background-color: #00C9CC;
+}
+
+#container-row img {
+  position:absolute;
+  bottom: 0;
+  padding: 0;
+  left: 0;
+  width: 25%;
+  /*transform: translateX(-50%);*/
+  z-index: 1;
+}
+
+#container-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: stretch;
+  margin-left: 2em;
+}
+#container-row p {
+  margin: 2em;
+  font-size:medium;
+  text-align: center;
+}
+
+.div1 {
+width: 90%;
 }
 
 #divContent{

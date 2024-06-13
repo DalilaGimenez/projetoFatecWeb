@@ -1,4 +1,4 @@
-import { api, requestConfig, uploads } from "../utils/config";
+import { api, requestConfig } from "../utils/config";
 /*{`https://projetofatecweb.onrender.com/uploads/${photo.image}`}*/
 // Publish an user's photo
 const publishPhoto = async (data, token) => {
