@@ -2,12 +2,12 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { resetPage, searchPhotos, getPhotos, incrementPage } from "../slices/photoSlice";
 import PhotoItem from "./PhotoItem";
-import { api } from "../utils/config";
 import Photo from "../pages/Photo/Photo";
+import { Link } from "react-router-dom";
 
 const PhotoGrid = ({ searchQuery }) => {
   const dispatch = useDispatch();
-  const { photos, loading, error, page } = useSelector((state) => state.photo);
+  const { photos, error, page } = useSelector((state) => state.photo);
 
   const [query, setQuery] = useState(searchQuery || "");
 
@@ -24,7 +24,7 @@ const PhotoGrid = ({ searchQuery }) => {
     if (!query) {
       dispatch(getPhotos());
     }
-  }, [dispatch, page]);
+  }, [dispatch, query, page]);
 
   const handleSearch = (e) => {
     e.preventDefault();

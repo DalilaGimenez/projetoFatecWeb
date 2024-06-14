@@ -3,7 +3,6 @@ import "./Photo.css";
 import { api } from "../../utils/config";
 
 // components
-import Message from "../../components/Message";
 import PhotoItem from "../../components/PhotoItem";
 import LikeContainer from "../../components/LikeContainer";
 import { Link } from "react-router-dom";
@@ -25,7 +24,7 @@ const Photo = () => {
   const resetMessage = useResetComponentMessage(dispatch);
 
   const { user } = useSelector((state) => state.auth);
-  const { photo, loading, error, message } = useSelector(
+  const { photo } = useSelector(
     (state) => state.photo
   );
 
@@ -63,15 +62,20 @@ const Photo = () => {
     return <p>Carregando...</p>;
   }*/
 
+  /*<div className="message-container">
+        {error && <Message msg={error} type="error" />}
+        {message && <Message msg={message} type="success" />}
+      </div>*/
+
+  const defaultProfile = require("../../images/default-profile.png");
+
   return (
     <div id="photo">
       <PhotoItem photo={photo} />
+      <p>...</p>
       <LikeContainer photo={photo} user={user} handleLike={handleLike} />
-      <div className="message-container">
-        {error && <Message msg={error} type="error" />}
-        {message && <Message msg={message} type="success" />}
-      </div>
-      <div className="comments">
+
+      <div id="comments">
         {photo.comments && (
           <>
             <h3>Comentários ({photo.comments.length}):</h3>
@@ -86,20 +90,25 @@ const Photo = () => {
             </form>
             {photo.comments.length === 0 && <p>Não há comentários...</p>}
             {photo.comments.map((comment) => (
-              <div className="comment" key={comment.comment}>
-                <div className="author">
-                  {comment.userImage && (
+              <div id="comments" key={comment.comment}>
+
+                <div id="author">
+                  {(comment.userImage || defaultProfile) && (
                     <img
-                      src={`${api}/users/${comment.userImage}`}
+                      src={
+                        comment.userImage ? `${api}/uploads/users/${comment.userId}`
+                          : defaultProfile
+                      }
                       alt={comment.userName}
                     />
                   )}
                   <Link to={`/users/${comment.userId}`}>
-                    <p color="black">{comment.userName}</p>
+                  Comentado por: <p>{comment.userName}</p>
                   </Link>
                 </div>
                 <p>{comment.comment}</p>
               </div>
+              
             ))}
           </>
         )}

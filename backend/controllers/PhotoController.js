@@ -11,6 +11,8 @@ const insertPhoto = async (req, res) => {
 
   const user = await User.findById(reqUser._id);
 
+  const photo = await Photo.findById(id);
+
   // Create photo
   const newPhoto = await Photo.create({
     image,
