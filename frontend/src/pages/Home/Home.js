@@ -21,7 +21,7 @@ const Home = () => {
       
       <div id="home">
         <div id="container-row">
-          <img src={pawImageBackground} alt="Paw Image"/>
+          <img src={pawImageBackground} alt="Paw logo"/>
           <div className="div1">
           <h2>Seja bem vindo ao</h2>
           <h1>Cãonecta Aumor</h1>

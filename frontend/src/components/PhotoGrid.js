@@ -1,9 +1,10 @@
+import "./PhotoGrid.css";
+
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { resetPage, searchPhotos, getPhotos, incrementPage } from "../slices/photoSlice";
 import PhotoItem from "./PhotoItem";
 import Photo from "../pages/Photo/Photo";
-import { Link } from "react-router-dom";
 
 const PhotoGrid = ({ searchQuery }) => {
   const dispatch = useDispatch();
