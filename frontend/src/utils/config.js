@@ -1,5 +1,5 @@
-export const api = "http://localhost:5000";
-export const uploads = "http://localhost:5000/uploads";
+export const api = process.env.REACT_APP_API;
+export const uploads = process.env.REACT_APP_API_UPLOADS;
 
 export const requestConfig = (method, data = null, token = null, image = null) => {
   let config = {
