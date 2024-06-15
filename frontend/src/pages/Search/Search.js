@@ -3,7 +3,7 @@ import "./Search.css";
 // hooks
 import { useQuery } from "../../hooks/useQuery";
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 //import { useResetComponentMessage } from "../../hooks/useResetComponentMessage";
 
 // components
